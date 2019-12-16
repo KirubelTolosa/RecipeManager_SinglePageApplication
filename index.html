@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Order Recipe</title>
+	<style type="text/css"></style>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	
+	<div style="overflow: hidden; display: flex; margin-top: 15px;">
+		<div style="width: 20%; float: left;"><img class="position" style="width: 100px; height: 100px; " src='http://www.myiconfinder.com/uploads/iconsets/256-256-bdb6f1f690f53ec70da10b4eae374f88.png'></img></div>
+		<div style="width: 40%; float: center; margin-left: 10%; margin-right: 10%;">
+			<div class="search" style=" float: center;">
+				<input id="search" type="text" placeholder="Search.."><br/>
+				<button id="submit" onclick="searchCuisine()" type="submit">SUBMIT</button>
+			</div>
+		</div>		
+		<div style="width: 20%; float: right; margin-top: 20px;"><img class="position" style="width: 60px; height: 60px;" src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/256x256/heart.png"></img></div>		
+	</div><br>
+
+
+
+	<div style="display: flex;">
+		<div class="sidePane" style="float: left; background-color: white;">
+<!-- Here is the item the searched elments append to -->
+			<ul id="searchedItems"></ul>
+		</div>
+		<div class="centerPane" style="float: center;">
+			<div class="pictureFrame">
+				<span class="fillwidth" id="mainPicture">
+					<img class="fillwidth" src="https://burmaspice.com/wp-content/uploads/2018/09/Burma-Spice-Middle-Eastern-Ethiopian-Recipe-Kitfo-web-res.jpg"></img>
+				</span>			
+			</div>
+			<div style="overflow: hidden; display: flex;"> 
+				<div class="menuDetails">
+					<ul id="minutes" class="textStyle1">minutes</ul>
+				</div>
+				<div class="menuDetails">
+					<ul id="servings" class="textStyle1">Servings</ul>
+				</div>				
+				</div>
+			<div style="overflow: hidden; display: flex;">
+				<div class="ingredients">
+					<ul id="list"></ul>
+				</div>
+				<div class="ingredients">
+					<ul id="ingredients"></ul>
+				</div>				
+			</div>
+		</div>
+		<div class="sidePane" style="float: right;">
+			<h1 class="textStyle2" style="background-color: white; text-align: center; font-size: 22px;">MY SHOPPING LIST</h1>
+			<ul id="shoppingList" class="textStyle2" style="padding: 20px;">1</ul>
+		</div>		
+	</div>
+
+
+
+
+	</body>
+	<script type="text/javascript" src="script.js"></script> 		
+	<script>
+
+	</script>
+</html>
