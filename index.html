@@ -5,52 +5,60 @@
 	<style type="text/css"></style>
 	<link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body  overflow: auto;>
 	
-	<div style="overflow: hidden; display: flex; margin-top: 15px;">
-		<div style="width: 20%; float: left;"><img class="position" style="width: 100px; height: 100px; " src='http://www.myiconfinder.com/uploads/iconsets/256-256-bdb6f1f690f53ec70da10b4eae374f88.png'></img></div>
+	<div style="display: flex;  background-color: #52527a; height: 60px; ">
+		<div style="width: 20%; float: left;">
+			<img class="position" style="width: 200px; height: auto; " src="https://static.wixstatic.com/media/a26c81_f97609f4a5534a74a7db772bc590bee6~mv2.png/v1/fill/w_388,h_134,al_c,q_85,usm_0.66_1.00_0.01/a26c81_f97609f4a5534a74a7db772bc590bee6~mv2.webp">
+			</img>
+		</div>
 		<div style="width: 40%; float: center; margin-left: 10%; margin-right: 10%;">
 			<div class="search" style=" float: center;">
-				<input id="search" type="text" placeholder="Search.."><br/>
+				<input id="search" type="text" placeholder="Find your favorite dish.."><br/>
 				<button id="submit" onclick="searchCuisine()" type="submit">SUBMIT</button>
 			</div>
 		</div>		
-		<div style="width: 20%; float: right; margin-top: 20px;"><img class="position" style="width: 60px; height: 60px;" src="https://d1nhio0ox7pgb.cloudfront.net/_img/g_collection_png/standard/256x256/heart.png"></img></div>		
+			
+	
 	</div><br>
 
 
 
 	<div style="display: flex;">
-		<div class="sidePane" style="float: left; background-color: white;">
+		<div class="sidePane" style="float: left; background-color: white; ">
 <!-- Here is the item the searched elments append to -->
 			<ul id="searchedItems"></ul>
 		</div>
-		<div class="centerPane" style="float: center;">
-			<div class="pictureFrame">
-				<span class="fillwidth" id="mainPicture">
-					<img class="fillwidth" src="https://burmaspice.com/wp-content/uploads/2018/09/Burma-Spice-Middle-Eastern-Ethiopian-Recipe-Kitfo-web-res.jpg"></img>
-				</span>			
+		<div class="centerPane" style="float: center; overflow: auto;">
+			<div id="pictureFrameContainer" class="pictureFrame">
+				<div class="fillwidth" id="mainPicture">					
+				</div>			
 			</div>
-			<div style="overflow: hidden; display: flex;"> 
+			<div class="menuDetailContainer"> 
 				<div class="menuDetails">
-					<ul id="minutes" class="textStyle1">minutes</ul>
+					<h2 id="publisher" class="textStyle1">Publisher</h2>
 				</div>
 				<div class="menuDetails">
-					<ul id="servings" class="textStyle1">Servings</ul>
+					<h2 id="social_rank" class="textStyle1">Rating</h2>
 				</div>				
 				</div>
 			<div style="overflow: hidden; display: flex;">
 				<div class="ingredients">
-					<ul id="list"></ul>
+					<ul id="list_1"  class="list"></ul>
 				</div>
 				<div class="ingredients">
-					<ul id="ingredients"></ul>
+					<ul id="list_2" class="list"></ul>
 				</div>				
 			</div>
 		</div>
 		<div class="sidePane" style="float: right;">
 			<h1 class="textStyle2" style="background-color: white; text-align: center; font-size: 22px;">MY SHOPPING LIST</h1>
-			<ul id="shoppingList" class="textStyle2" style="padding: 20px;">1</ul>
+			<button id="AddtoCart" onclick= "javascript:PlaceOrder()">Place Order</button>
+			<div class="ingredients">
+			<ul id="shoppingList" class="flexerDetail"></ul>
+			
+			<ul id="storedList">Orders</ul>
+			</div>
 		</div>		
 	</div>
 
@@ -60,6 +68,7 @@
 	</body>
 	<script type="text/javascript" src="script.js"></script> 		
 	<script>
-
+		window.onload = searchCuisine;
+		window.onload = showOrders;
 	</script>
 </html>

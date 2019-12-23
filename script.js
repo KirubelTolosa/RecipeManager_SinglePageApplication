@@ -52,34 +52,126 @@ function searchCuisine() {
 function loadRecipe(source) {
 	
 	var id = source.attributes["data-id"].nodeValue;
-	var ingredients = document.getElementById("list");	
+	var ingredients_1 = document.getElementById("list_1");	
+	var ingredients_2 = document.getElementById("list_2");	
+	var mainPicture = document.getElementById("mainPicture");
+	var cuisineImage = document.createElement("img"); 
+	var publisher = document.getElementById("publisher");
+	var social_rank = document.getElementById("social_rank");
+	var pictureFrameContainer = document.getElementById("pictureFrameContainer");
 	var xhttp_a = new XMLHttpRequest();
 				xhttp_a.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {						
-						ingredients.innerHTML = "";
+					if (this.readyState == 4 && this.status == 200) {	
+
+						ingredients_1.innerHTML = "";						
+						ingredients_2.innerHTML = "";
+						mainPicture.innerHTML = "";	
+						publisher.innerHTML = "";
+						social_rank.innerHTML = "";
+
 						var res_2 = JSON.parse(xhttp_a.responseText);
 						var id = res_2.recipe._id;						
 						var list = res_2.recipe.ingredients;
-						for (var i = 0; i<list.length; i++) {
+						var publisherValue = res_2.recipe.publisher;
+						var social_rankValue =  Math.round(res_2.recipe.social_rank) + "%";
+						var a = Math.round(list.length/2);
+						b = list.length;
+
+							pictureFrameContainer.className = 'pictureFrame1';
+							cuisineImage.src =res_2.recipe.image_url;	
+							mainPicture.append(cuisineImage);	
+							cuisineImage.className = 'fillwidth'; 
+							
+							
+						    publisher.append(publisherValue);
+							social_rank.append(social_rankValue);
+
+						for (var i = 0; i<a; i++) {
 							var ingredientContainer = document.createElement("div");			
-							var ingredientList = document.createElement("li");																
+							var ingredientList = document.createElement("li");
+							var action_2 = "javascript:shopItem(this);";
+							ingredientList.setAttribute("onClick", action_2);
+
+							ingredientList.className = 'list'; 		
+							ingredientList.setAttribute("item_id", "item" + i);														
 							ingredientContainer = list[i];	
 							ingredientList.append(ingredientContainer);							
-							ingredients.append(ingredientList); 
-						}						
+							ingredients_1.append(ingredientList); 
+						}		
+
+						for (var j = a; j<b; j++) {						
+							var ingredientContainer_2 = document.createElement("div");			
+							var ingredientList_2 = document.createElement("li");	
+							var action_2 = "javascript:shopItem(this);";
+							ingredientList_2.setAttribute("onClick", action_2);
+
+							ingredientList_2.className = 'list'; 	
+							ingredientList.setAttribute("item_id", "item" + j);		
+							ingredientContainer_2 = list[j];	
+							ingredientList_2.append(ingredientContainer_2);							
+							ingredients_2.append(ingredientList_2); 
+						}				
 					}
+					
 				};		
 				xhttp_a.open("GET", "https://api.codetabs.com/v1/proxy?quest=https://recipesapi.herokuapp.com/api/get?rId=" + id, true);
 				xhttp_a.send();					
 }
 
+function shopItem(input) {
+	var item = input.innerText;
+
+	//var item = input.textContent;
+	var shoppingList = document.getElementById("shoppingList");
+	var removeButton = document.createElement("img");
+	//var text = document.createTextNode("X")
+	removeButton.src = "https://cdn1.iconfinder.com/data/icons/main-ui-elements-with-colour-bg/512/close-24.png";                  
+    //removeButton.appendChild(text);
+    var remove = "javascript:remove(this);";
+    removeButton.setAttribute("onClick", remove);
+	var itemList = document.createElement("li");
+	
+	//itemList.setAttribute("")
+	itemList.append(removeButton);
+	itemList.append(item);
+	itemList.className = 'list';
+	shoppingList.append(itemList);
+	//document.getElementById("myBtn").addEventListener("click", displayDate);
+}
+
+function remove(input) {	
+	input.parentNode.remove();	    
+
+}
 
 						
+function PlaceOrder() {
 
+	var Items = document.getElementById("shoppingList").children;
+	var size = Items.length;
+	var itemsDescription = "";
+	var selection = document.getElementById("selection");
+	var myArray = [];
+		for(var i = 0; i<size; i++) {
+			//itemsDescription = itemsDescription + Items[i].innerText + ",";
+			//selection.innerText = "Your selections are" + itemsDescription;
+			myArray.push(Items[i].innerText);
+		}
+	localStorage.setItem("shoppingStorage", JSON.stringify(myArray));
+	showOrders();
+}
 
-
-
-
+function showOrders() {
+	
+	var storedList = JSON.parse(localStorage.getItem("shoppingStorage"));
+	var ordersElement = document.getElementById("storedList");
+	var size = storedList.length;
+	for (var i = 0; i<size; i++) {
+		var orderElement = document.createElement("li");
+		orderElement.innerText = storedList[i];
+		ordersElement.append(orderElement);
+	}
+}
 
 
 

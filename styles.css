@@ -4,20 +4,21 @@ img.position {
   float: center;
   margin-left: auto;
   margin-right: auto;
-  vertical-align: center;
+  vertical-align: top;
   width: 80px;
   height: auto;
+  padding: 8px;
+  
 }
 
 div.search {
   display: flex;
   color: black;
   text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+  vertical-align: center;
+  padding-top: 18px;  
+  font-size: 16px;
   width: 100%
-
 }
 
 div.search input[type=text] {
@@ -28,25 +29,28 @@ div.search input[type=text] {
   
 }
 
-div.search {
-  overflow: hidden;
-  background-color: #e9e9e9;
-}
+
 
 div.sidePane{
   background-color: #efeff5;
   float: left;
   width: 25%;
-  min-height: 1024px;
+  max-height: 1024px;
   max-height: auto;
-
+  overflow: auto;
 }
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
 
 div.centerPane {
   float: left;
   width: 50%;
-  min-height: 1024px;
-  max-height: auto;
+ 
+  max-height: 680px;
  /* border-style: solid;
   border-color: red; */
   margin: 0px 20px 20px 20px;
@@ -55,40 +59,46 @@ div.centerPane {
 }
 
 div.pictureFrame {
- /* border-style: solid;
- border-color: red; */
-  width: 100%
-  height: 500px;
+ 
+  height: 450px;
   text-align:   center;
   display:  block;
-  margin-bottom: -15px;
+  margin: 10px 20px 10px 20px;
+  background-color: #e6e6ff;
+  padding: 10px  10px  10px  10px;
+  background-image: url("https://static.wixstatic.com/media/a26c81_2c075568e2324659a32d95857ec77224~mv2_d_2680_1780_s_2.jpg");
+  background-repeat: no-repeat;
+  background-size: 710px 472px;
+}
+div.pictureFrame1 {
+  height: 450px;
+  text-align:   center;
+  display:  block;
+  margin: 10px 20px 10px 20px;
+  background-color: #e6e6ff;
+  padding: 10px  10px  10px  10px;  
+  float: center;
 }
 
 img.fillwidth {
-    max-width: 100%;
-    max-height: 500px;
     min-width: auto;
-    min-height:   auto;
+    max-width: auto;
+    min-height: 450px;
+    max-height: 450px;
+
 
   }
 
-div.menuDetails {
-  background-color: #52527a;
-  height:   10px;
-  width:  100%;
-
-  
-}
 
 .textStyle1 {
   text-align:   center;
   text-transform:   uppercase;  
-  word-spacing:   30px;
+  word-spacing:   10px;
   font-family:  Comfortaa;
   color:  white;
-  font-size:  28px;
+  font-size:  20px;
   font-weight:  bold;
-  letter-spacing:   9px;
+  letter-spacing:   0px;
   vertical-align:   center;
 }
 
@@ -103,13 +113,18 @@ div.menuDetails {
   vertical-align:   center;
 }
 
+div.menuDetailContainer {
+overflow: hidden; 
+display: flex; 
+padding: 10px;
+}
 
 div.menuDetails {
   background-color: #52527a;
-  height:   100px;
   width:  100%;
-  margin: 25px 5px 5px 5px;
-}
+  margin: 5px 5px 5px 5px;
+
+ }
 
 
 div.recepieList {
@@ -121,10 +136,13 @@ div.recepieList {
 img.cropper {
     width: 80px;
     height: 80px;
-    position: relative;
+    position: center;
     overflow: hidden;
     border-radius: 50%;
     margin-top: 15px;
+    border-style: solid;
+    border-color: #52527a;
+    border-width: 4px;
 }
 
 div.flexerContainer {
@@ -140,5 +158,28 @@ div.flexerDetail {
   color: #52527a;
   font-size:  14px;
   vertical-align: center;
-
 }
+
+div.ingredients {
+  height:   auto;
+  width:  100%;
+  margin: 5px 10px 5px -10px;
+  font-family:  Comfortaa;
+  color: #52527a;
+  font-size:  16px;
+  vertical-align:   center;
+  line-height: 200%;
+}
+
+ul.list {
+    display: block;
+    list-style-image: url("https://cdn0.iconfinder.com/data/icons/user-interface-vol-3-12/66/75-24.png");
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    border-image-width: 5px;
+    background-size: 40px;
+}
+
